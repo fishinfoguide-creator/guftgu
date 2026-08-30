@@ -288,6 +288,7 @@ export default function Guftgu() {
       await safeSet(`usergroups:${form.phone}`, []);
       setUser(record);
       setDirectory((d) => ({ ...d, [record.username]: record }));
+            localStorage.setItem("guftgu_session", form.phone);
     } finally {
       setBusy(false);
     }
