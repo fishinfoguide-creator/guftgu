@@ -350,8 +350,8 @@ export default function Guftgu() {
     setMuted(false);
     setCameraOff(false);
   };
-
   const logout = () => {
+    localStorage.removeItem("guftgu_session");
     clearInterval(pollRef.current);
     clearInterval(chatsPollRef.current);
     clearInterval(heartbeatRef.current);
