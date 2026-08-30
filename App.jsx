@@ -153,20 +153,22 @@ export default function Guftgu() {
   const isOnline = (ts) => typeof ts === "number" && Date.now() - ts < ONLINE_WINDOW_MS;
 
   useEffect(() => {
-    setBooting(false);
+    (async () => {
+      try {
+        const savedPhone = localStorage.getItem("guftgu_session");
+        if (savedPhone) {
+          const existing = await safeGet(`user:${savedPhone}`);
+          if (existing) {
+            setUser(existing);
+            setDirectory((d) => ({ ...d, [existing.username]: existing }));
+          } else {
+            localStorage.removeItem("guftgu_session");
+          }
+        }
+      } catch {}
+      setBooting(false);
+    })();
   }, []);
-
-  // ---------- auth: phone number + OTP (WhatsApp-style) ----------
-  const startResendCooldown = () => {
-    setResendIn(30);
-    clearInterval(resendTimerRef.current);
-    resendTimerRef.current = setInterval(() => {
-      setResendIn((s) => {
-        if (s <= 1) { clearInterval(resendTimerRef.current); return 0; }
-        return s - 1;
-      });
-    }, 1000);
-  };
 
   const sendOtp = async () => {
     setAuthError("");
