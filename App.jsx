@@ -240,6 +240,7 @@ export default function Guftgu() {
       if (existing) {
         setUser(existing);
         setDirectory((d) => ({ ...d, [existing.username]: existing }));
+                localStorage.setItem("guftgu_session", form.phone);
       } else {
         setAuthStep("profile");
       }
