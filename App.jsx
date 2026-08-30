@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
-  Send, LogOut, Search, MessageCircle, Users, Loader2, CircleUserRound, Plus, X,
+  Send, LogOut, Search, MessageCircle, Users, Loader2, CircleUserRound, Plus, X,  
+      localStorage.removeItem("guftgu_session");
   Paperclip, Download, FileText, Mic, Square, Phone, Video, PhoneOff, MicOff, VideoOff,
   Mail, Calendar, Camera, ArrowLeft, Pencil, ShieldCheck,
 } from "lucide-react";
