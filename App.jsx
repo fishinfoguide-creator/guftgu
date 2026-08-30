@@ -855,8 +855,9 @@ export default function Guftgu() {
             </h1>
             <p style={{ color: C.subtext, fontSize: 13, marginTop: 6 }}>Your conversations, your people.</p>
           </div>
+          <p style={{ color: C.subtext, fontSize: 10, marginTop: 4, textAlign: 'center' }}>Developed by Saifulrehman — Digital Marketer & Freelancer</p>
 
-          {/* ---- Step 1: phone number ---- */}
+          {/* {/* ---- Step 1: phone number ---- */}
           {authStep === "phone" && (
             <>
               <p style={{ fontSize: 13, color: C.text, marginBottom: 4, fontWeight: 600 }}>Enter your mobile number</p>
