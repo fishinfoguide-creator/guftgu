@@ -161,9 +161,8 @@ export default function Guftgu() {
           if (existing) {
             setUser(existing);
             setDirectory((d) => ({ ...d, [existing.username]: existing }));
-          } else {
-            localStorage.removeItem("guftgu_session");
-          }
+          } else 
+        localStorage.setItem("guftgu_session", form.phone);          }
         }
       } catch {}
       setBooting(false);
@@ -182,6 +181,7 @@ export default function Guftgu() {
     try {
       const code = genOtp();
       await safeSet(`otp:${phone}`, { code, expiresAt: Date.now() + 5 * 60 * 1000 });
+            localStorage.setItem("guftgu_session", form.phone);
       setForm((f) => ({ ...f, phone, otp: "" }));
       setDevOtp(code);
       setAuthStep("otp");
